@@ -1,10 +1,59 @@
 // SASS: Quản lí dễ dàng CSS -> Code thuần, code với framework CSS (Bootstrap, Tailwind), Framework JS ( REACT, ANGULAR, VUE)
 //REACT: tái sử dụng được HTML
 
-// Khó khăn CSS: 
+// Khó khăn CSS:
 //* Khó tái sử dụng: có biến nhưng kén trình duyệt cũ (IE), không có hàm
 
+//! Edit ở file gốc (file src scss) -> vì khi biên dịch lại file kết quả (file css) sẽ bị đè lại nội dung
 
-.heading1{
-    color: red;
+//Variable
+$color: red;
+$bg-color: yellowgreen;
+
+.heading1 {
+    color: $color;
+    background-color: $bg-color;
+}
+//? Nesting
+// .div1 h1
+.div1 {
+    h1 {
+        color: $color;
+        background-color: $bg-color;
+    }
+    //Button:hover
+    button{
+        //& parent selector, đại diện cho thẻ/bộ bên ngoài dấu &
+        &:hover{
+            color: pink;
+        }
+    }
+}
+
+// @extend, @function: xem thêm
+
+// @mixin: gần giống hàm -> dùng dự án vừa và nhỏ
+
+@mixin styleDiv($color-heading, $bg-heading, $btn-hover){
+    
+        h1 {
+            color:$color-heading;
+            background-color: $bg-heading ;
+        }
+        //Button:hover
+        button{
+            //& parent selector, đại diện cho thẻ/bộ bên ngoài dấu &
+            &:hover{
+                color: $btn-hover ;
+            }
+        }
+    //! Không có return 
+}
+
+.div2{
+    @include styleDiv($color, blue, green)
+}
+
+.div3{
+    @include styleDiv(red, yellow, green)
 }
