@@ -22,9 +22,9 @@ $bg-color: yellowgreen;
         background-color: $bg-color;
     }
     //Button:hover
-    button{
+    button {
         //& parent selector, đại diện cho thẻ/bộ bên ngoài dấu &
-        &:hover{
+        &:hover {
             color: pink;
         }
     }
@@ -34,26 +34,25 @@ $bg-color: yellowgreen;
 
 // @mixin: gần giống hàm -> dùng dự án vừa và nhỏ
 
-@mixin styleDiv($color-heading, $bg-heading, $btn-hover){
-    
-        h1 {
-            color:$color-heading;
-            background-color: $bg-heading ;
+@mixin styleDiv($color-heading, $bg-heading, $btn-hover) {
+    h1 {
+        color: $color-heading;
+        background-color: $bg-heading;
+    }
+    //Button:hover
+    button {
+        //& parent selector, đại diện cho thẻ/bộ bên ngoài dấu &
+        &:hover {
+            color: $btn-hover;
         }
-        //Button:hover
-        button{
-            //& parent selector, đại diện cho thẻ/bộ bên ngoài dấu &
-            &:hover{
-                color: $btn-hover ;
-            }
-        }
-    //! Không có return 
+    }
+    //! Không có return
 }
 
-.div2{
-    @include styleDiv($color, blue, green)
+.div2 {
+    @include styleDiv($color, blue, green);
 }
 
-.div3{
-    @include styleDiv(red, yellow, green)
+.div3 {
+    @include styleDiv(red, yellow, green);
 }
